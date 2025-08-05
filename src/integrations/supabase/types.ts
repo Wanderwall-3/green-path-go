@@ -14,7 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      challenge_participants: {
+        Row: {
+          challenge_id: string
+          id: string
+          joined_at: string
+          user_id: string
+        }
+        Insert: {
+          challenge_id: string
+          id?: string
+          joined_at?: string
+          user_id: string
+        }
+        Update: {
+          challenge_id?: string
+          id?: string
+          joined_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "challenge_participants_challenge_id_fkey"
+            columns: ["challenge_id"]
+            isOneToOne: false
+            referencedRelation: "challenges"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      challenges: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          end_date: string
+          id: string
+          start_date: string
+          target_reduction: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          end_date: string
+          id?: string
+          start_date: string
+          target_reduction?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          end_date?: string
+          id?: string
+          start_date?: string
+          target_reduction?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          community: string
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          community: string
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          community?: string
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      waste_logs: {
+        Row: {
+          category: string
+          created_at: string
+          date: string
+          id: string
+          item_name: string
+          quantity: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          date?: string
+          id?: string
+          item_name: string
+          quantity?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          date?: string
+          id?: string
+          item_name?: string
+          quantity?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
